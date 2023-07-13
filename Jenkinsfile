@@ -9,7 +9,7 @@ pipeline {
   stages {
     stage("Test") {
       agent {
-        any {
+        docker {
           image 'python:3.8-slim-buster'
           args '-u 0:0 -v /home/pht/tmp_jenkins:/root/.cache'
         }
