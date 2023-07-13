@@ -1,7 +1,8 @@
-# syntax=docker/dockerfile:1
-FROM node:18-alpine
+FROM python:3.8-slim-buster
+RUN pip install poetry
+
 WORKDIR /app
-COPY . .
-RUN yarn install --production
-CMD ["node", "src/index.js"]
-EXPOSE 3000
+COPY ./ /app
+RUN poetry install
+ENTRYPOINT ["poetry","run"]
+CMD ["gunicorn","-b","0.0.0.0:5000", "server:app"]
