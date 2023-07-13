@@ -8,7 +8,7 @@ pipeline {
         }
         stage('docker image') {
             steps {
-                withDockerRegistry(credentialsId: 'docker-token-2', url: 'https://index.docker.io/v1/') {
+                withDockerRegistry(credentialsId: 'docker', url: 'https://index.docker.io/v1/') {
                     sh 'docker build -t phanhoaithu/jenkins-hello-world:v1 .'
                     sh 'docker push phanhoaithu/jenkins-hello-world:v1'
                 }
