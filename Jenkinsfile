@@ -9,10 +9,10 @@ pipeline {
   stages {
     stage("Test") {
       agent {
-        docker {
-          image 'python:3.8-slim-buster'
-          args '-u 0:0 -v /home/pht/tmp_jenkins:/root/.cache'
-        }
+          docker {
+            image 'python:3.8-slim-buster'
+            args '-u 0:0 -v /home/pht/tmp_jenkins:/root/.cache'
+          }
       }
       steps {
         sh "pip install poetry"
